@@ -18,11 +18,12 @@ def changeContent(post, pack='template', cls='Template'):
 
 def main():
     print("Starting Bloc Template Generator")
-    pack = input("Enter package name: ")
+    print("Giving package name 'home' will create a folder named 'home_page'")
+    pack = input("Enter package name (as home): ")
     if type(pack) is not str:
         print("Invalid Package Name")
         sys.exit(1)
-    cls = input("Enter class name: ")
+    cls = input("Enter class name (as Home): ")
     if type(cls) is not str:
         print("Invalid Class Name")
         sys.exit(1)

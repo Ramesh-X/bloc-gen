@@ -6,8 +6,7 @@ import 'template_bloc.dart';
 import 'template_state.dart';
 
 class TemplateView extends StatelessWidget {
-  final log = Log("TemplateView");
-
+  static final log = Log("TemplateView");
   static final loadingWidget = Center(
     child: CircularProgressIndicator(),
   );
