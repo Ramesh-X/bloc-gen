@@ -31,7 +31,9 @@ class TemplateBloc extends Bloc<TemplateEvent, TemplateState> {
 
   @override
   void onError(Object error, StackTrace stacktrace) {
+    super.onError(error, stacktrace);
     log.e('$stacktrace');
+    log.e('$error');
     _addErr(error);
   }
 
