@@ -8,6 +8,10 @@ class TemplateState {
     @required this.error,
   });
 
+  static TemplateState get initialState => TemplateState(
+    error: '',
+  );
+
   TemplateState clone({
     String error,
   }) {

@@ -31,12 +31,16 @@ def main():
                 elif i == 2:
                     i += 1
                     text += '@required this.%s,\n' %v
-                elif i == 3:
+                elif i == 4:
                     i += 1
                     text += '%s %s,\n' % (t, v)
-            elif line.strip().endswith('(') and i == 4:
-                i += 1
-                text += '%s: %s ?? this.%s,\n' % (v, v, v)
+            elif line.strip().endswith('('):
+                if i == 3:
+                    i += 1
+                    text += '%s: null,\n' %v
+                elif i == 5:
+                    i += 1
+                    text += '%s: %s ?? this.%s,\n' % (v, v, v)
 
     with open(path, 'w') as w_f:
         w_f.write(text)

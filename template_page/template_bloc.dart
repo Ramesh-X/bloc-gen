@@ -10,12 +10,7 @@ import 'template_state.dart';
 class TemplateBloc extends Bloc<TemplateEvent, TemplateState> {
   static final log = Log("TemplateBloc");
 
-  TemplateBloc(BuildContext context);
-
-  @override
-  TemplateState get initialState => TemplateState(
-        error: '',
-      );
+  TemplateBloc(BuildContext context) : super(TemplateState.initialState);
 
   @override
   Stream<TemplateState> mapEventToState(TemplateEvent event) async* {
@@ -45,7 +40,9 @@ class TemplateBloc extends Bloc<TemplateEvent, TemplateState> {
   void _addErr(e) {
     try {
       add(ErrorEvent(
-        (e is String) ? e : (e.message ?? "Something went wrong. Please try again !"),
+        (e is String)
+            ? e
+            : (e.message ?? "Something went wrong. Please try again !"),
       ));
     } catch (e) {
       add(ErrorEvent("Something went wrong. Please try again !"));

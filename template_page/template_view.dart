@@ -13,14 +13,16 @@ class TemplateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
     final templateBloc = BlocProvider.of<TemplateBloc>(context);
+    // ignore: close_sinks
     final rootBloc = BlocProvider.of<RootPageBloc>(context);
     log.d("Loading Template View");
 
     CustomSnackBar customSnackBar;
     final scaffold = Scaffold(
       body: BlocBuilder<TemplateBloc, TemplateState>(
-          condition: (pre, current) => true,
+          buildWhen: (pre, current) => true,
           builder: (context, state) {
             return Center(
               child: Text("HI..."),
@@ -31,7 +33,7 @@ class TemplateView extends StatelessWidget {
     return MultiBlocListener(
       listeners: [
         BlocListener<TemplateBloc, TemplateState>(
-          condition: (pre, current) => pre.error != current.error,
+          listenWhen: (pre, current) => pre.error != current.error,
           listener: (context, state) {
             if (state.error?.isNotEmpty ?? false) {
               customSnackBar?.showErrorSnackBar(state.error);
