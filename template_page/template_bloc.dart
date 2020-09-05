@@ -38,6 +38,9 @@ class TemplateBloc extends Bloc<TemplateEvent, TemplateState> {
   }
 
   void _addErr(e) {
+    if (e is StateError) {
+      return;
+    }
     try {
       add(ErrorEvent(
         (e is String)
